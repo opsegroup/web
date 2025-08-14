@@ -8,57 +8,41 @@
 </head>
 <body>
     <header>
-	    <h1>Grupo de Optoelectrónica y Procesamiento de Señales (OPSE)</h1>
+	     <h1>Grupo de Optoelectrónica y Procesamiento de Señales (OPSE)</h1>
         <nav>
             <ul class="menu">
-                <li><a href="#publicaciones">Publicaciones</a></li>
-                <li><a href="#personal">Personal</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#seminario">Seminario</a></li>
-                <li><a href="#docencia">Docencia</a></li>
-				<li><a href="#equipos">Equipos</a></li>
-                <li><a href="#wiki">Wiki</a></li>
-                <li><a href="#english">English</a></li>
+                <li><a href="#" data-content="publicaciones.html">Publicaciones</a></li>
+                <li><a href="#" data-content="personal.html">Personal</a></li>
+                <li><a href="#" data-content="proyectos.html">Proyectos</a></li>
+                <li><a href="#" data-content="seminario.html">Seminario</a></li>
+                <li><a href="#" data-content="docencia.html">Docencia</a></li>
+                <li><a href="#" data-content="wiki.html">Wiki</a></li>                
             </ul>
         </nav>
        
     </header>
-    <main>
-        <section id="publicaciones">
-            <h2>Publicaciones</h2>
-            <p>Aquí encontrarás nuestras publicaciones científicas y técnicas más recientes.</p>
-        </section>
-        <section id="personal">
-            <h2>Personal</h2>
-            <p>Conoce a los miembros del grupo OPSE.</p>
-        </section>
-        <section id="proyectos">
-            <h2>Proyectos</h2>
-            <p>Descubre los proyectos activos y anteriores desarrollados por el grupo.</p>
-        </section>
-        <section id="seminario">
-            <h2>Seminario</h2>
-            <p>Información sobre nuestros seminarios, charlas y actividades académicas.</p>
-        </section>
-        <section id="docencia">
-            <h2>Docencia</h2>
-            <p>Recursos y actividades de enseñanza relacionadas con OPSE.</p>
-        </section>
-		 <section id="equipos">
-            <h2>Docencia</h2>
-            <p>Recursos y actividades de enseñanza relacionadas con OPSE.</p>
-        </section>
-        <section id="wiki">
-            <h2>Wiki</h2>
-            <p>Documentación y recursos colaborativos del grupo.</p>
-        </section>
-        <section id="english">
-            <h2>English</h2>
-            <p>For information in English, please visit this section. (Coming soon)</p>
-        </section>
+    <main id="main-content">
+        <!-- Aquí se cargará el contenido dinámico -->
+        <p>Bienvenido al Grupo OPSE. Selecciona una sección del menú para comenzar.</p>
     </main>
     <footer>
         <p>&copy; 2025 Grupo OPSE - Optoelectrónica y Procesamiento de Señales</p>
     </footer>
+    <script>
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const contentFile = this.getAttribute('data-content');
+                fetch(contentFile)
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById('main-content').innerHTML = html;
+                    })
+                    .catch(err => {
+                        document.getElementById('main-content').innerHTML = "<p>No se pudo cargar el contenido.</p>";
+                    });
+            });
+        });
+    </script>
 </body>
 </html>

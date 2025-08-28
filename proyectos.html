@@ -1,2 +1,226 @@
-<h2>Proyectos</h2>
-<p>Proyectos desarrollados por el grupo OPSE.</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Proyectos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: rgb(36, 72, 213);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr); /* Modificación principal */
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        /* Aumentar el ancho de la tarjeta para que ocupe todo el espacio */
+        .project-card {
+            max-width: 800px; /* Ancho máximo para que no se vea demasiado ancha */
+            margin: 0 auto; /* Centrar la tarjeta en la fila */
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .project-description {
+            color: #5a6c7d;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .read-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .read-more-btn:hover::before {
+            left: 100%;
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .project-content {
+                padding: 20px;
+            }
+            
+            .project-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            .project-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Proyectos</h1>             
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="img/r3d.jpg" alt="Proyecto 1" class="project-image">
+                <div class="project-content">
+                    <h2 class="project-title">Sistema de reconstrucción 3D 360° con visualización y rotación interactiva
+controlada por usuario</h2>
+                    <p class="project-description">
+                        
+                        El proyecto se orienta al desarrollo de un sistema integral de reconstrucción tridimensional (3D) de 360° con control interactivo para el usuario. Para alcanzar este propósito, se plantea inicialmente la implementación de un sistema de perfilometría mediante proyección de franjas, que permita capturar reconstrucciones 3D parciales de los objetos. Posteriormente, dichas reconstrucciones serán fusionadas mediante algoritmos que combinan técnicas tradicionales e inteligencia artificial, con el fin de generar modelos tridimensionales completos en 360°. Finalmente, se integrará un módulo de interfaz interactiva, diseñado para que el usuario manipule y visualice de manera intuitiva las reconstrucciones obtenidas.
+                        <br>
+                        <strong>Investigador Principal:</strong> Fabio Vega Nieto. <br>
+                        <strong>Co-Investigador:</strong> Juan Manuel Vilardy Ortiz.<br>
+                        <strong>Asesor:</strong> Rigoberto Juárez Salazar. <br>
+                        <strong>Financionación:</strong> Universidad Popular del Cesar, convocatoria
+                        interna 2023, convenio 066 de 2 diciembre de 2024.
+                    </p>
+                    <a href="#" class="read-more-btn">Leer más</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="https://picsum.photos/400/250?random=2" alt="Proyecto 2" class="project-image">
+                <div class="project-content">
+                    <h2 class="project-title">Sistema de Gestión</h2>
+                    <p class="project-description">
+                        Sistema completo de gestión empresarial con dashboard interactivo, reportes automatizados 
+                        y herramientas de análisis para optimizar los procesos de negocio.
+                    </p>
+                    <a href="#" class="read-more-btn">Leer más</a>
+                </div>
+            </div>
+
+        
+
+          
+        </div>
+    </div>
+</body>
+</html>
